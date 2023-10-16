@@ -1,0 +1,8 @@
+.carousel-container {
+  height: 530px;
+  background: aqua;
+}
+
+.carousel-container .carousel-item {
+  height: 100%;
+}

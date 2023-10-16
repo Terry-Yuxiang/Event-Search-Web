@@ -1,0 +1,127 @@
+<div id="eventDetails" class="container">
+  <div class="row d-flex align-items-center text-center justify-content-center">
+    <div id="detailText" class="col-lg-5 col-md-12 text-center">
+      <div *ngIf="detailsCardData?.dates?.start?.localDate" id="date" class="row">
+        <p class="detail-text-title col-12">Date</p>
+        <p class="detail-text-content col-12" id="date-content">
+          {{detailsCardData?.dates?.start?.localDate}}
+        </p>
+      </div>
+      <div *ngIf="detailsCardData?._embedded?.attractions" id="artist" class="row">
+        <p class="detail-text-title col-12">Artist/Team</p>
+        <p class="detail-text-content col-12" id="artist-content" style="color: white">
+          <span *ngFor="let artistArray of detailsCardData?._embedded?.attractions;  let last = last">
+            <span *ngIf="artistArray?.name && artistArray?.url"><a *ngIf="artistArray?.url" href="{{artistArray?.url}}"
+                                                                   target="_blank"
+                                                                   style="text-decoration: none; color: white">{{artistArray.name}}</a></span>
+            <span *ngIf="artistArray?.name && !artistArray?.url">{{artistArray.name}}</span>
+            <span *ngIf="!last"> | </span>
+          </span>
+          <!--          这是个array后面再处理-->
+        </p>
+      </div>
+      <div *ngIf="detailsCardData?._embedded?.venues?.[0]?.name" id="venue" class="row">
+        <p class="detail-text-title col-12">Venue</p>
+        <p class="detail-text-content col-12" id="venue-content">
+          {{detailsCardData?._embedded?.venues?.[0]?.name}}
+        </p>
+      </div>
+      <div *ngIf="detailsCardData?.classifications[0]?.segment" id="genres" class="row">
+        <p class="detail-text-title col-12">Genres</p>
+        <p class="detail-text-content col-12" id="genres-content" #genreText>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.segment?.name && detailsCardData.classifications[0].segment.name !== 'Undefined'">{{detailsCardData.classifications[0].segment.name}}
+          </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.genre?.name && detailsCardData.classifications[0].genre.name !== 'Undefined'"> | </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.genre?.name && detailsCardData.classifications[0].genre.name !== 'Undefined'">{{detailsCardData.classifications[0].genre.name}}
+          </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.subGenre?.name && detailsCardData.classifications[0].subGenre.name !== 'Undefined'"> | </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.subGenre?.name && detailsCardData.classifications[0].subGenre.name !== 'Undefined'">{{detailsCardData.classifications[0].subGenre.name}}
+          </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.type?.name && detailsCardData.classifications[0].type.name !== 'Undefined'"> | </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.type?.name && detailsCardData.classifications[0].type.name !== 'Undefined'">{{detailsCardData.classifications[0].type.name}}
+          </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.subType?.name && detailsCardData.classifications[0].subType.name !== 'Undefined'"> | </span>
+          <span
+            *ngIf="detailsCardData?.classifications[0]?.subType?.name && detailsCardData.classifications[0].subType.name !== 'Undefined'">{{detailsCardData.classifications[0].subType.name}}
+          </span>
+        </p>
+      </div>
+      <div *ngIf="detailsCardData?.priceRanges?.[0]?.min || detailsCardData?.priceRanges?.[0]?.max" id="priceRanges"
+           class="row">
+        <p class="detail-text-title col-12">Price Ranges</p>
+        <p class="detail-text-content col-12" id="priceRanges-content">
+          <span
+            *ngIf="detailsCardData?.priceRanges?.[0]?.min && detailsCardData?.priceRanges?.[0]?.max">{{detailsCardData.priceRanges[0].min}}
+            - {{detailsCardData.priceRanges[0].max}}</span>
+          <span
+            *ngIf="!detailsCardData?.priceRanges?.[0]?.min && detailsCardData?.priceRanges?.[0]?.max">{{detailsCardData.priceRanges[0].max}}</span>
+          <span
+            *ngIf="detailsCardData?.priceRanges?.[0]?.min && !detailsCardData?.priceRanges?.[0]?.max">{{detailsCardData.priceRanges[0].min}}</span>
+        </p>
+      </div>
+      <div *ngIf="detailsCardData?.dates?.status?.code" id="ticketStatus" class="row d-flex justify-content-center"
+           style="margin-bottom: 15px">
+        <p class="detail-text-title col-12">Ticket Status</p>
+        <button class="detail-text-content col-3" id="ticketStatus-content"
+                [ngClass]="{
+    'on-sale': detailsCardData?.dates?.status?.code === 'onsale',
+    'off-sale': detailsCardData?.dates?.status?.code === 'offsale',
+    'canceled': detailsCardData?.dates?.status?.code === 'cancelled',
+    'postponed': detailsCardData?.dates?.status?.code === 'postponed',
+    'rescheduled': detailsCardData?.dates?.status?.code === 'rescheduled'
+  }"
+        >
+          <span *ngIf="detailsCardData?.dates?.status?.code === 'onsale'">On Sale</span>
+          <span *ngIf="detailsCardData?.dates?.status?.code === 'offsale'">Off Sale</span>
+          <span *ngIf="detailsCardData?.dates?.status?.code === 'canceled'">Cancelled</span>
+          <span *ngIf="detailsCardData?.dates?.status?.code === 'postponed'">Postponed</span>
+          <span *ngIf="detailsCardData?.dates?.status?.code === 'rescheduled'">Rescheduled</span>
+        </button>
+      </div>
+      <div *ngIf="detailsCardData?.url" id="buyTicket" class="row">
+        <p class="detail-text-title col-12">Buy Ticket At</p>
+        <p class="detail-text-content col-12" id="buyTicket-content">
+          <a href={{detailsCardData?.url}} target="_blank">TicketMaster</a>
+        </p>
+      </div>
+    </div>
+
+    <div *ngIf="detailsCardData?.seatmap?.staticUrl" id="detailPic"
+         class="col-lg-6 col-md-12 justify-content-center align-items-center">
+      <img id="eventPic" src="{{detailsCardData?.seatmap?.staticUrl}}" class="img-fluid">
+    </div>
+  </div>
+
+  <div class="text-center" style="height: 50px; margin-top: 20px">
+
+    <span style="color: white; font-size: 20px">Share on: </span>
+    <span style="vertical-align: bottom; line-height: 1; display: inline-block;">
+      <a
+        [href] = "twitterShare"
+        target="_blank" class="text-decoration-none" style="line-height: 1; display: inline-block;">
+<!--        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-twitter align-items-center justify-content-center"-->
+<!--             viewBox="0 0 16 16" style="color: rgb(74, 153, 233);">-->
+<!--          <path-->
+<!--            d="M13.458 4.172c.005.107.008.215.008.324 0 3.292-2.5 7.08-7.08 7.08-1.404 0-2.717-.41-3.823-1.116.195.023.393.035.595.035 1.166 0 2.234-.397 3.086-1.064a2.493 2.493 0 0 1-2.328-1.728c.15.03.303.046.46.046.224 0 .447-.029.657-.085a2.49 2.49 0 0 1-1.996-2.437v-.031a2.5 2.5 0 0 0 1.124.309 2.49 2.49 0 0 1-.774-3.32 7.058 7.058 0 0 0 5.12 2.587 2.48 2.48 0 0 1-.069-.563 2.49 2.49 0 0 1 4.33-1.702 4.979 4.979 0 0 0 1.58-.603 2.488 2.488 0 0 1-1.09 1.37 4.978 4.978 0 0 0 1.428-.39 5.025 5.025 0 0 1-1.248 1.293z"/>-->
+<!--        </svg>-->
+        <i class="fa-brands fa-twitter" style="color: #4a99e9; font-size: 35px; cursor: pointer; pointer-events: none;"></i>
+      </a>
+    </span>
+    <span style="vertical-align: bottom; line-height: 1; display: inline-block;" >
+            <a href="https://www.facebook.com/sharer.php?u={{detailsCardData?.url}}" target="_blank"
+               class="text-decoration-none align-items-center" id="facebook" style="line-height: 1; display: inline-block;">
+            <i class="fab fa-facebook-square"
+               style="color: #09398b; font-size: 35px; cursor: pointer; margin-left: 5px; pointer-events: none;"></i>
+            </a>
+    </span>
+  </div>
+
+</div>

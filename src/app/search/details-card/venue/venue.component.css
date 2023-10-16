@@ -1,0 +1,50 @@
+.venue-title {
+  font-size: 26px;
+  color: rgb(123, 255, 255);
+}
+
+
+.content-wrapper {
+  transition: all 0.3s;
+}
+
+.collapsed-content {
+  max-height: 50px; /* 设置折叠后的最大高度，根据需要调整 */
+  overflow: hidden;
+}
+
+
+.withFolder {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-height: 1.2em; /* fallback */
+  max-height: 2.4em; /* fallback */
+}
+
+.withoutFolder {
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-height: 1.2em; /* fallback */
+}
+
+
+.google-map-button {
+  background-color: rgb(221, 52, 68);
+  color: white;
+  border: none;
+  padding: 5px 5px 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .google-map-button {
+    width: 60%;
+  }
+}
+

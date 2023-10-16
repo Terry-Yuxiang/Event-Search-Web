@@ -1,0 +1,43 @@
+
+<div class="d-flex align-items-center justify-content-center" *ngIf="noFavoriteEvents">
+  <div class="row bg-white text-danger text-center col-lg-6 col-md-5" style="border-radius: 15px; width: 75%;">
+    <div class="col" style="width: 75%; font-size: larger; font-weight: bold">No favorite events to show</div>
+  </div>
+</div>
+
+
+<div *ngIf="!noFavoriteEvents">
+  <p class="text-center" style="font-size: 20px; color: rgb(133, 250, 224);">List of your favorite events</p>
+  <div class="container-fluid px-0 col-lg-8">
+    <div class="table-responsive">
+      <table class="table table-borderless text-dark rounded-4  text-center align-items-center" id="favorite-events">
+        <thead>
+        <tr>
+          <th scope="col" style="border-radius: 20px 0px 0px 0px">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Event</th>
+          <th scope="col">Category</th>
+          <th scope="col">Venue</th>
+          <th scope="col" style="border-radius: 0px 20px 0px 0px">Favorite</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 在此处添加表格数据 -->
+        <tr *ngFor="let event of arrayData; let i =index; let lastRow = last"  [class.last-row]="lastRow">
+          <td [class.last-row-first-cell]="lastRow" style="font-weight: bold">{{i + 1}}</td>
+          <td>{{event?.value?.date}}</td>
+          <td>{{event?.value?.event}}</td>
+          <td>{{event?.value?.category}}</td>
+          <td>{{event?.value?.venue}}</td>
+          <td [class.last-row-last-cell]="lastRow">
+            <span class="material-symbols-outlined" style="cursor: pointer"
+                  (click)="deleteFavorite(event)">delete</span>
+          </td>
+        </tr>
+        <!-- 添加更多行数据，如果需要的话 -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

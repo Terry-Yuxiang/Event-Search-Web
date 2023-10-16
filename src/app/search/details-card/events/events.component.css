@@ -1,0 +1,91 @@
+#eventDetails {
+  /*height: 900px;*/
+  /*width: 840px;*/
+  /*background-color: rgba(77, 77, 77, 0.5);*/
+  margin-top: 30px;
+  /*backdrop-filter: blur(10px);*/
+  /*border-radius: 1rem;*/
+  /*margin: auto;*/
+  /*margin-top: 50px;*/
+  /*set it to block make it appear when getting json from backend*/
+}
+
+
+#detailPic {
+  /*width: 635px;*/
+  /*height: 440px;*/
+  /*margin-top: 50px;*/
+  /*margin-left: 390px;*/
+  text-align: center;
+  /*background: green;*/
+}
+
+.detail-text-title {
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 24px;
+  font-family: Arial;
+  color: rgb(123, 255, 255);
+}
+
+.detail-text-content {
+  /*background: green;*/
+
+  /*margin-bottom: 12px;*/
+  color: white;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+/*!*#eventPic {*!*/
+/*!*  width: 645px;*!*/
+/*!*  height: 440px;*!*/
+/*!*  background: aqua;*!*/
+
+/*!*  margin: auto;*!*/
+/*!*}*!*/
+
+#ticketStatus-content {
+  /*padding: .5rem 1rem;*/
+  border-radius: .5rem;
+  border: 0px;
+  height: 30px;
+  text-align: center;
+  font-size: 16px;
+  font-family: sans-serif;
+  vertical-align: center;
+}
+
+#ticketStatus-content:hover {
+  cursor: default;
+}
+
+#facebook :hover{
+  text-decoration: none;
+}
+
+#shareOn {
+  color: white;
+}
+
+.on-sale {
+  background-color: green;
+}
+
+.off-sale {
+  background-color: red;
+}
+
+.canceled {
+  background-color: black;
+}
+
+.postponed {
+  background-color: orange;
+}
+
+.rescheduled {
+  background-color: orange;
+}
+

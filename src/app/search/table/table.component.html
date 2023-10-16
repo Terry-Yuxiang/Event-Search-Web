@@ -1,0 +1,42 @@
+<div class="container-fluid px-0 col-lg-10">
+  <div class="table-responsive">
+    <table class="table table-borderless text-center rounded-5 text-white">
+      <thead>
+      <tr>
+        <th style="border-radius: 20px 0px 0px 0px">Date/Time</th>
+        <th>Icon</th>
+        <th>Event</th>
+        <th>Genre</th>
+        <th style="border-radius: 0px 20px 0px 0px">Venue</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of searchTableData; let lastRow = last"  [class.last-row]="lastRow" (click)="getEventDetails(item)" style="cursor: pointer">
+<!--        <td [class.last-row-first-cell]="lastRow">{{ item.Date.localDate }}<br>{{item.Date.localTime}}</td>-->
+<!--        <td><img [src]="item.icon" style="height: 45px; width: 75px"></td>-->
+<!--        <td (click)="getEventDetails(item)" style="cursor: pointer">{{ item.event }}</td>-->
+<!--        <td>{{ item.genre }}</td>-->
+<!--        <td [class.last-row-last-cell]="lastRow">{{ item.venue }}</td>-->
+        <td [class.last-row-first-cell]="lastRow" style="white-space: nowrap">
+          <span *ngIf="item?.dates?.start?.localDate">{{item?.dates?.start?.localDate}}</span>
+          <br>
+          <span *ngIf="item?.dates?.start?.localTime">{{item?.dates?.start?.localTime}}</span>
+        </td>
+        <td>
+          <img [src]="item?.images?.[0]?.url" style="height: 45px; width: 75px">
+        </td>
+        <td >
+          {{ item?.name }}
+        </td>
+        <td>
+          {{ item?.classifications?.[0]?.segment?.name }}
+        </td>
+        <td [class.last-row-last-cell]="lastRow">
+          {{item?._embedded?.venues?.[0]?.name}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

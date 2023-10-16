@@ -1,0 +1,14 @@
+#card {
+  /*height: 810px;*/
+  max-width: 840px;
+  background-color: rgba(36, 36, 36, 0.8);
+  margin: 125px auto auto auto;
+  backdrop-filter: blur(10px);
+  padding: 0;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

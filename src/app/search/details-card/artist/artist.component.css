@@ -1,0 +1,26 @@
+
+@media only screen and (max-width: 1000px) {
+  .mobile-img-album {
+    width: 66.67%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .mobile-img-photo {
+    width: 50%;
+  }
+}
+
+
+@media only screen and (max-width: 1000px){
+  #album-featuring-brand {
+    text-align: center;
+  }
+}
+
+#popularity {
+  position: absolute;
+}
+
+
+

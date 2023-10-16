@@ -1,0 +1,19 @@
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+      <app-search-form (submitClicked)="showTable($event)" (resetPage)="resetPage($event)" ></app-search-form>
+      <app-table (createDetailsCard) = "createDetailsCard($event)"
+        *ngIf="searchTableVisible && !noResult" [searchTableData]="searchTableData" ></app-table>
+      <app-no-result-table *ngIf="noResult"></app-no-result-table>
+      <app-details-card *ngIf="detailCardVisible" [detailsCardData]="detailsCardData" [spotifyData]="spotifyData" [venueData]="venueData" (disableDetailsCard)="disableDetialCard($event)"></app-details-card>
+
+
+    </div>
+  </div>
+</div>

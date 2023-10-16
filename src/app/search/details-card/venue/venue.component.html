@@ -1,0 +1,141 @@
+<div class="container" style="margin: 20px auto 20px auto">
+  <div class="row justify-content-center">
+    <div id="name-address-phone" class="col-lg-6">
+      <div *ngIf="venueData?._embedded?.venues?.[0]?.name"
+        id="name" class="row text-center" style="margin-bottom: 20px">
+        <div class="venue-title col-12">Name</div>
+        <div class="venue-content col-12" id="name-content" style="color: white">
+          {{venueData?._embedded?.venues?.[0]?.name}}
+        </div>
+      </div>
+      <div *ngIf="venueData?._embedded?.venues?.[0]?.address?.line1 || venueData?._embedded?.venues?.[0]?.city?.name || venueData?._embedded?.venues?.[0]?.state?.name"
+        id="address" class="row text-center" style="margin-bottom: 20px">
+        <div class="venue-title col-12">Address</div>
+        <div class="venue-content col-12" id="address-content" style="color: white">
+          {{venueData?._embedded?.venues?.[0]?.address?.line1}}
+          <span *ngIf="venueData?._embedded?.venues?.[0]?.city?.name">, </span>
+          {{venueData?._embedded?.venues?.[0]?.city?.name}}
+          <span *ngIf="venueData?._embedded?.venues?.[0]?.state?.name">, </span>
+          {{venueData?._embedded?.venues?.[0]?.state?.name}}
+        </div>
+      </div>
+      <div *ngIf="venueData?._embedded?.venues?.[0]?.boxOfficeInfo?.phoneNumberDetail"
+        id="phone" class="row text-center" style="margin-bottom: 20px">
+        <div class="venue-title col-12">Phone Number</div>
+        <div class="venue-content col-12" id="phone-content" style="color: white">
+          {{venueData?._embedded?.venues?.[0]?.boxOfficeInfo?.phoneNumberDetail}}
+        </div>
+      </div>
+    </div>
+
+
+    <div id="hours-rule" class="col-lg-6">
+
+      <div *ngIf="venueData?._embedded?.venues?.[0]?.boxOfficeInfo?.openHoursDetail" id="open-hours" class="row text-center" style="margin-bottom: 20px">
+        <div class="venue-title col-12">Open Hours</div>
+        <div class="venue-content col-12" id="open-hours-content">
+          <div class="folder-text" style="color: white"
+               [ngClass]="{'withFolder': OpenHoursCollapsed, 'withoutFolder': !OpenHoursCollapsed}">
+            {{venueData?._embedded?.venues?.[0]?.boxOfficeInfo?.openHoursDetail}}
+          </div>
+          <button type="button" class="btn btn-link" (click)="OpenHoursFolder()" style="color: rgb(136, 187, 210)">
+            {{OpenHoursCollapsed ? 'Show more' : 'Show less'}}
+            <span *ngIf="OpenHoursCollapsed" style="color: white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+          </svg>
+            </span>
+            <span *ngIf="!OpenHoursCollapsed" style="color: white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="venueData?._embedded?.venues?.[0]?.generalInfo?.generalRule" id="genreal-rule" class="row text-center" style="margin-bottom: 20px">
+        <div class="venue-title col-12">General Rule</div>
+        <div class="venue-content col-12" id="genreal-rule-content">
+          <div class="folder-text" style="color: white"
+               [ngClass]="{'withFolder': GenralRulesCollapsed, 'withoutFolder': !GenralRulesCollapsed}">
+            {{venueData?._embedded?.venues?.[0]?.generalInfo?.generalRule}}
+          </div>
+          <button type="button" class="btn btn-link" (click)="GeneralRulesFolder()" style="color: rgb(136, 187, 210)">
+            {{GenralRulesCollapsed ? 'Show more' : 'Show less'}}
+            <span *ngIf="GenralRulesCollapsed" style="color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+          </svg>
+            </span>
+            <span *ngIf="!GenralRulesCollapsed" style="color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="venueData?._embedded?.venues?.[0]?.generalInfo?.childRule" id="child-rule" class="row text-center" style="margin-bottom: 20px">
+        <div class="venue-title col-12">Child Rule</div>
+        <div class="venue-content col-12" id="child-rule-content">
+          <div class="folder-text" style="color: white"
+               [ngClass]="{'withFolder': ChildRuleCollapsed, 'withoutFolder': !ChildRuleCollapsed}" >
+            {{venueData?._embedded?.venues?.[0]?.generalInfo?.childRule}}
+          </div>
+          <button type="button" class="btn btn-link" (click)="ChildRuleFolder()" style="color: rgb(136, 187, 210)">
+            {{ChildRuleCollapsed ? 'Show more' : 'Show less'}}
+            <span *ngIf="ChildRuleCollapsed" style="color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+          </svg>
+            </span>
+            <span *ngIf="!ChildRuleCollapsed" style="color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-chevron-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="row justify-content-center text-center">
+    <button class="google-map-button col-lg-4 btn btn-lg btn-outline-primary" (click)="open(content)">Show venue On Google map</button>
+  </div>
+<!--  <a class='venue-detail-href' href='https://www.google.com/maps/search/?api=1&query=" + venueDetail.name + ", " + venueDetail.address + ", " + venueDetail.city + ", " + venueDetail.postalCode + "' target='_blank'>" + "Open In Google Maps" + "</a>-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Event Venue</h4>
+    </div>
+    <div class="modal-body my-google-map" style="width: 100%" #mapContainer>
+        <google-map [options]="mapOptions" width="100%"[height]="mapContainer.offsetWidth">
+          <map-marker [position]="marker.position"></map-marker>
+        </google-map>
+    </div>
+    <div class="modal-header">
+      <button type="button" class="btn btn-outline-dark btn-dark" style="color: white" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+
+
+</div>

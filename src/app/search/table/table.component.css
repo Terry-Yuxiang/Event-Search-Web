@@ -1,0 +1,30 @@
+.table {
+  margin-top: 200px;
+}
+
+/*.black-row {*/
+/*  background: rgb(32, 34, 39);*/
+/*}*/
+
+.table tbody tr:nth-child(odd) {
+  background-color: rgb(40, 42, 46);
+  color: white;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: rgb(32, 34, 39);
+  color: white;
+}
+
+.table thead {
+  background-color: rgb(32, 34, 39);
+  color: white;
+}
+
+.last-row-first-cell {
+  border-radius: 0px 0px 0px 20px;
+}
+.last-row-last-cell {
+  border-radius: 0px 0px 20px 0px;
+}
+

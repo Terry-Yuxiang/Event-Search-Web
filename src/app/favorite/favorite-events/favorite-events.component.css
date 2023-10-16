@@ -1,0 +1,32 @@
+.table tbody tr:nth-child(odd) {
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  color: black;
+}
+
+.table tbody tr:nth-child(even) {
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  color: black;
+}
+
+.table thead {
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  color: black;
+}
+
+.last-row-first-cell {
+  border-radius: 0px 0px 0px 20px;
+}
+.last-row-last-cell {
+  border-radius: 0px 0px 20px 0px;
+}
+
+.table tbody tr:hover {
+  background-color: rgb(231,231,231);
+}
+

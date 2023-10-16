@@ -1,0 +1,85 @@
+.carousel-container {
+  /*后面删掉，让其自动扩展*/
+  /*height: 530px;*/
+  /*background: aqua;*/
+}
+
+.carousel-container .carousel-item {
+  height: 100%;
+}
+
+#details-navigation {
+  background-color: rgb(72, 151, 135);
+  justify-content: center;
+  /*width: 840px;*/
+  /*max-width: 840px;*/
+  margin: 0;
+  border: rgb(72, 151, 135);
+}
+.nav {
+  border: rgb(72, 151, 135);
+}
+
+.nav-item {
+  flex: 0 0 180px;
+  border: rgb(72, 151, 135);
+}
+
+.nav-link {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: rgb(72, 151, 135);
+  border-radius: 0;
+
+  /*Use to active the animation*/
+  position: relative;
+  overflow: hidden;
+}
+
+/*Use to active the animation*/
+.nav-link::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/*Use to active the animation*/
+.nav-link:focus::before {
+  animation: spreadShadow 0.6s;
+}
+
+/*Use to active the animation*/
+@keyframes spreadShadow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.tab-active {
+  border-bottom: blue 3px solid;
+}
+
+.nav-link:hover {
+  cursor:pointer;
+}
+
+

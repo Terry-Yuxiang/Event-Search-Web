@@ -1,0 +1,66 @@
+<!--<ngb-carousel>-->
+<!--  <ng-template ngbSlide>-->
+<!--    <div class="picsum-img-wrapper">-->
+<!--      11111-->
+<!--    </div>-->
+<!--    <div class="carousel-caption">-->
+<!--      <h3>First slide label</h3>-->
+<!--      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+<!--  <ng-template ngbSlide>-->
+<!--    <div class="picsum-img-wrapper">-->
+<!--      222222-->
+<!--    </div>-->
+<!--    <div class="carousel-caption">-->
+<!--      <h3>Second slide label</h3>-->
+<!--      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+<!--  <ng-template ngbSlide>-->
+<!--    <div class="picsum-img-wrapper">-->
+<!--      33333-->
+<!--    </div>-->
+<!--    <div class="carousel-caption">-->
+<!--      <h3>Third slide label</h3>-->
+<!--      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+<!--</ngb-carousel>-->
+
+
+
+<!--//滚动的切换形式-->
+<nav class="nav-tabs">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" (click)="carousel.select('slide0')">Tab1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="carousel.select('slide1')">Tab2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="carousel.select('slide2')">Tab3</a>
+    </li>
+  </ul>
+</nav>
+
+<ngb-carousel #carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="0" class="carousel-container" >
+  <ng-template ngbSlide id="slide0">
+    <p>
+      Raw denim
+    </p>
+  </ng-template>
+  <ng-template ngbSlide id="slide1">
+    <p>
+      Exercitation +1 labore velit.
+    </p>
+  </ng-template>
+  <ng-template ngbSlide id="slide2">
+    <p>
+      Sed commodo
+    </p>
+  </ng-template>
+</ngb-carousel>
+
+

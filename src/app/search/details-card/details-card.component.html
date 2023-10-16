@@ -1,0 +1,54 @@
+<!--<div class="justify-content-center  col-md-6" id = "card">-->
+<!--  <div style=" background-color: yellow; display: block;"></div>-->
+<!--  <div style=" display: block;"></div>-->
+<!--  <app-navigation></app-navigation>-->
+
+<!--  <div style="height: 55px; width: 840px; background-color: rgba(59,137, 115); display: block;">-->
+<!--    <div id="card-events" style=""></div>-->
+<!--    <div id="card-artist-teams"></div>-->
+<!--    <div id="card-venues"></div>-->
+<!--  </div>-->
+<!--  <div style="height: 600px; width: 840px; background-color: yellow; display: block;"></div>-->
+
+<!--</div>-->
+
+
+<div class="container" id="card" style="margin-bottom: 3rem">
+
+  <div class="row">
+    <div  style="width: 80px; color:white; margin: 1rem auto 2rem 1rem">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+      <button type="button" class="btn btn-link" (click)="goback()" style="padding: 0; color:white">
+        Back
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-auto text-center d-flex align-items-center justify-content-center d-flex flex-wrap">
+        <h4 style="color: white; order: 1">{{detailsCardData.name}}</h4>
+        <div class="col-lg-1 col-sm-1 d-flex align-items-center justify-content-center" style="padding: 0; width: 40px; margin: auto 10px auto 10px; order: 2;" >
+          <div *ngIf="eventFavorite" (click)="clickFavorite()" style="cursor:pointer;" class="bg-white circle col-lg-1 d-flex align-items-center justify-content-center"><span class="material-icons" style="color: red">favorite</span></div>
+          <div *ngIf="!eventFavorite" (click)="clickFavorite()" style="cursor:pointer;" class="bg-white circle col-lg-1 d-flex align-items-center justify-content-center"><span class="material-icons">favorite_border</span></div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="row" style="margin-top: 2rem">
+    <app-navigation [detailsCardData]="detailsCardData" [spotifyData] = "spotifyData" [venueData]="venueData"></app-navigation>
+  </div>
+
+
+</div>
+
+
+<!--<app-carousel></app-carousel>-->
+

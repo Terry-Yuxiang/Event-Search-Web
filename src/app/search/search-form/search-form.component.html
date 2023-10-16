@@ -1,0 +1,73 @@
+
+
+<div class="d-flex justify-content-center align-items-center" style="margin-top: 60px">
+        <div id="search-form">
+          <div style="width: 95%;" id="search-form-inside">
+            <p class="heading">Events Search</p>
+            <div id="hr-below-head"></div>
+            <form [formGroup]="searchForm">
+              <div class="mb-3">
+                <label for="inputKeyword" class="form-input-title">Keyword<span
+                  class="required-signal">*</span></label>
+                <input matInput [matAutocomplete]="auto"
+                  type="text" class="form-control" id="inputKeyword" formControlName="inputKeyword" #keywordCheck required>
+
+<!--                -->
+                <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="onSelected($event)"
+                                  [displayWith]="displayWith">
+                  <mat-option *ngIf="isLoading" class="is-loading" style="height: 20px">
+                      <mat-spinner style="width: 20px"></mat-spinner>
+
+                  </mat-option>
+                  <ng-container *ngIf="!isLoading">
+                    <mat-option *ngFor="let event of filterEvents" [value]="event">
+                      <span><b>{{event.name}}</b></span>
+                    </mat-option>
+                  </ng-container>
+                </mat-autocomplete>
+
+<!--                -->
+              </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="inputDistance" class="form-input-title">Distance</label>
+                  <input type="number" class="form-control" id="inputDistance" placeholder="10" formControlName="inputDistance">
+                </div>
+                <div class="mb-3 col-md-3" id="select-input">
+                  <label for="inputCategory" class="form-input-title">Category<span
+                    class="required-signal">*</span></label>
+                  <select class="form-select" id="inputCategory" formControlName="inputCategory">
+                    <option value="Default">Default</option>
+                    <option value="Music">Music</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Arts & Theatre">Arts & Theatre</option>
+                    <option value="Film">Film</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="inputLocation" class="form-input-title">Location<span
+                  class="required-signal">*</span></label>
+                <input type="text" class="form-control" id="inputLocation" formControlName="inputLocation" #locationCheck required>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input (click)="autoLocationCheck()" class="form-check-input" type="checkbox" id="gridCheck" formControlName="isAutoLocation">
+                  <label class="form-check-label" class="form-input-title" for="gridCheck" >
+                    Auto-detect your location
+                  </label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <button (click)= "submitData()" type="button" class="btn btn-danger me-2">SUBMIT</button>
+                <button (click)="resetForm()" type="clear" class="btn btn-primary ms-2">CLEAR</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+

@@ -1,0 +1,26 @@
+<nav id="details-navigation" class="col-12 d-flex align-items-center justify-content-center">
+  <ul class="nav nav-pills col-lg-7">
+    <li class="nav-item flex-fill text-center col-4">
+      <a class="nav-link" tabindex="0" [ngClass]="{'tab-active': activeTab === 'slide0'}" (click)="carousel.select('slide0');setActiveTab('slide0')">Events</a>
+    </li>
+    <li class="nav-item flex-fill text-center col-4">
+      <a class="nav-link" tabindex="0" [ngClass]="{'tab-active': activeTab === 'slide1'}" (click)="carousel.select('slide1');setActiveTab('slide1')">Artist/Team</a>
+    </li>
+    <li class="nav-item flex-fill text-center col-4">
+      <a class="nav-link" tabindex="0" [ngClass]="{'tab-active': activeTab === 'slide2'}" (click)="carousel.select('slide2');setActiveTab('slide2')">Venue</a>
+    </li>
+  </ul>
+</nav>
+
+<ngb-carousel #carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="0" class="carousel-container" >
+  <ng-template ngbSlide id="slide0">
+    <app-events [detailsCardData]="detailsCardData"></app-events>
+<!--    aaaaaadawdawdawdawdfsdvc-->
+  </ng-template>
+  <ng-template ngbSlide id="slide1">
+      <app-artist [detailsCardData]="detailsCardData" [spotifyData]="spotifyData"></app-artist>
+  </ng-template>
+  <ng-template ngbSlide id="slide2">
+    <app-venue [venueData]="venueData"></app-venue>
+  </ng-template>
+</ngb-carousel>
